@@ -14,14 +14,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/hiotapp"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".test.glidetest.TestGlideActivity"></activity>
-        <activity android:name=".test.TestActivity" >
-
-        </activity>
-        <activity android:name=".test.networktest.TestNetworkPackActivity">
-
-        </activity>
+        android:theme="@style/AppTheme.NoAction">
+        <activity android:name=".ui.register.RegisterActivity"></activity>
+        <activity android:name=".test.glidetest.TestGlideActivity" />
+        <activity android:name=".test.TestActivity"></activity>
+        <activity android:name=".test.networktest.TestNetworkPackActivity"></activity>
         <activity android:name=".test.networktest.TestRxJavaActivity" />
         <activity android:name=".test.networktest.TestGsonActivity" />
         <activity android:name=".test.networktest.TestRetrofitActivity" />
@@ -33,9 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.LoginActivity">
-
-        </activity>
+        <activity android:name=".ui.login.LoginActivity"></activity>
         <activity android:name=".test.mvptest.TestMVPActivity" />
         <activity
             android:name=".ui.main.MainActivity"
