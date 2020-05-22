@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public abstract class BaseFragment<V extends BaseView,P extends BasePresenter<V>> extends Fragment implements BaseView {
+public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V>> extends Fragment implements BaseView {
 
     private P presenter;
 
@@ -23,7 +24,7 @@ public abstract class BaseFragment<V extends BaseView,P extends BasePresenter<V>
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=initView(inflater,container,savedInstanceState);
+        View view = initView(inflater, container, savedInstanceState);
         injectDependencies();
         return view;
     }
@@ -31,8 +32,8 @@ public abstract class BaseFragment<V extends BaseView,P extends BasePresenter<V>
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter=createPresenter();
-        if (presenter!=null){
+        presenter = createPresenter();
+        if (presenter != null) {
             presenter.setView((V) this);
         }
     }
@@ -51,8 +52,13 @@ public abstract class BaseFragment<V extends BaseView,P extends BasePresenter<V>
     public void onDestroyView() {
         super.onDestroyView();
 
-        if (presenter!=null){
+        if (presenter != null) {
             presenter.destroy();
         }
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

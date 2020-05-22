@@ -17,11 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".test.glidetest.TestGlideActivity"></activity>
         <activity android:name=".test.TestActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".test.networktest.TestNetworkPackActivity">
 
@@ -31,6 +27,13 @@
         <activity android:name=".test.networktest.TestRetrofitActivity" />
         <activity android:name=".test.networktest.TestOkHttpActivity" />
         <activity android:name=".ui.main.SplashActivity" />
+        <activity android:name=".ui.login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".test.mvptest.TestMVPActivity" />
         <activity
             android:name=".ui.main.MainActivity"

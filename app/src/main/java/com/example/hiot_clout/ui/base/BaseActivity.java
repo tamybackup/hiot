@@ -2,6 +2,7 @@ package com.example.hiot_clout.ui.base;
 
 import android.app.Application;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,5 +80,10 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter<V>
      */
     protected ActivityModule getActivityModule() {
         return new ActivityModule(this);
+    }
+
+    @Override
+    public void showMessage(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -3,16 +3,12 @@ package com.example.hiot_clout.data;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.test.networktest.UserBean;
-import com.example.hiot_clout.utils.Constant;
+import com.example.hiot_clout.utils.Constants;
 
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -35,7 +31,7 @@ public class DataManager {
      * @return
      */
     public Observable<ResultBase<LoginResultDTO>> login(String username, String password) {
-        return service.login(username, password, Constant.LOGIN_CODE_APP);
+        return service.login(username, password, Constants.LOGIN_CODE_APP);
     }
 
     /**
@@ -72,7 +68,7 @@ public class DataManager {
         userBean.setUsername(userName);
         userBean.setPassword(password);
         userBean.setEmail(email);
-        userBean.setUserType(Constant.REGISTER_TYPE_NORMAL);
+        userBean.setUserType(Constants.REGISTER_TYPE_NORMAL);
         return service.register(userBean);
     }
 }
