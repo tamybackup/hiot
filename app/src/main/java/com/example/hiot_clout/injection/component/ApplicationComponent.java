@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.example.hiot_clout.App;
 import com.example.hiot_clout.data.DataManager;
+import com.example.hiot_clout.data.SharedPreferencesHelper;
 import com.example.hiot_clout.injection.ApplicationContext;
 import com.example.hiot_clout.injection.module.ApplicationModule;
 
@@ -28,6 +29,7 @@ public interface ApplicationComponent {
 
     DataManager dataManager();
 
+    SharedPreferencesHelper sharedPreferencesHelper();
 
     @Component.Builder
     interface ApplicationModuleBuilder {

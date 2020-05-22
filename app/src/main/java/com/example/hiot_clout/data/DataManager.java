@@ -5,10 +5,10 @@ import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.test.networktest.UserBean;
 import com.example.hiot_clout.utils.Constants;
 
-
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
 
 
 /**
@@ -18,9 +18,12 @@ public class DataManager {
 
     private NetworkService service;
 
+    SharedPreferencesHelper sharedPreferencesHelper;
+
     @Inject
-    public DataManager(NetworkService service) {
+    public DataManager(NetworkService service, SharedPreferencesHelper sharedPreferencesHelper) {
         this.service = service;
+        this.sharedPreferencesHelper = sharedPreferencesHelper;
     }
 
     /**
@@ -31,7 +34,17 @@ public class DataManager {
      * @return
      */
     public Observable<ResultBase<LoginResultDTO>> login(String username, String password) {
-        return service.login(username, password, Constants.LOGIN_CODE_APP);
+        return service.login(username, password, Constants.LOGIN_CODE_APP)
+                .doOnNext(new Consumer<ResultBase<LoginResultDTO>>() {
+                    @Override
+                    public void accept(ResultBase<LoginResultDTO> resultBase) throws Exception {
+                        if (resultBase.getStatus() == Constants.MSG_STATUS_SUCCESS) {
+                            if (resultBase != null && resultBase.getData() != null) {
+                                sharedPreferencesHelper.setUserToken(resultBase.getData().getTokenValue());
+                            }
+                        }
+                    }
+                });
     }
 
     /**
@@ -57,12 +70,13 @@ public class DataManager {
 
     /**
      * 注册
-     * @param userName  用户名
-     * @param password  用户密码
-     * @param email  邮箱地址
+     *
+     * @param userName 用户名
+     * @param password 用户密码
+     * @param email    邮箱地址
      * @return
      */
-    public Observable<ResultBase<UserBean>> register(String userName, String  password, String email) {
+    public Observable<ResultBase<UserBean>> register(String userName, String password, String email) {
 
         UserBean userBean = new UserBean();
         userBean.setUsername(userName);

@@ -16,12 +16,13 @@
 package com.example.hiot_clout.injection.component;
 
 
-import com.example.hiot_clout.test.networktest.TestNetworkPackActivity;
-import com.example.hiot_clout.ui.login.LoginActivity;
-import com.example.hiot_clout.ui.main.MainActivity;
 import com.example.hiot_clout.injection.PerActivity;
 import com.example.hiot_clout.injection.module.ActivityModule;
 import com.example.hiot_clout.test.mvptest.TestMVPActivity;
+import com.example.hiot_clout.test.networktest.TestNetworkPackActivity;
+import com.example.hiot_clout.ui.login.LoginActivity;
+import com.example.hiot_clout.ui.main.MainActivity;
+import com.example.hiot_clout.ui.main.SplashActivity;
 
 import dagger.Component;
 
@@ -36,11 +37,15 @@ import dagger.Component;
 public interface ActivityComponent {
 
     void inject(MainActivity mainActivity);
+
     void inject(TestMVPActivity testMVPActivity);
 
     void inject(TestNetworkPackActivity activity);
 
     void inject(LoginActivity activity);
+
+    void inject(SplashActivity activity);
+
     @Component.Builder
     interface ActivityComponentBuilder {
 

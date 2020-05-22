@@ -6,6 +6,7 @@ import com.example.hiot_clout.data.DataManager;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.ui.base.BasePresenter;
+import com.example.hiot_clout.utils.Constants;
 
 import javax.inject.Inject;
 
@@ -32,7 +33,7 @@ class LoginPresenter extends BasePresenter<LoginView> {
         subscrib(dataManager.login(email, password), new RequestCallback<ResultBase<LoginResultDTO>>() {
             @Override
             public void onNext(ResultBase<LoginResultDTO> resultBase) {
-                if (resultBase.getStatus() == 1) {
+                if (resultBase.getStatus() == Constants.MSG_STATUS_SUCCESS) {
                     //如果登录成功
                     if (resultBase != null && resultBase.getData() != null) {
                         //弹出登录成功

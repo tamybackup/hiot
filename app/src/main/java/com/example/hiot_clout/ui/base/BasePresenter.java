@@ -2,6 +2,8 @@ package com.example.hiot_clout.ui.base;
 
 import android.util.Log;
 
+import com.example.hiot_clout.utils.LoadingUtil;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -75,11 +77,14 @@ public class BasePresenter<V extends BaseView> {
         public abstract void onNext(T t);
 
         public void onError(Throwable e) {
-            Log.e(TAG, "onError: ",e );
+            //对话框隐藏
+            LoadingUtil.hideLoading();
+            Log.e(TAG, "onError: ", e);
         }
 
         public void onComplete() {
-
+            //对话框隐藏
+            LoadingUtil.hideLoading();
         }
     }
 }
