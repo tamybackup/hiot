@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 登录注册相关 -->
+    <string name="login_direct">已有账号？直接登录</string>
 </resources>

@@ -5,10 +5,15 @@ import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.test.networktest.UserBean;
 import com.example.hiot_clout.utils.Constants;
 
+import java.io.File;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 
 /**
@@ -50,22 +55,20 @@ public class DataManager {
     /**
      * 获取用户信息
      *
-     * @param authorization
      * @return
      */
-    public Observable<ResultBase<UserBean>> getUserinfo(String authorization) {
-        return service.getUserinfo(authorization);
+    public Observable<ResultBase<UserBean>> getUserinfo() {
+        return service.getUserinfo(sharedPreferencesHelper.getUserToken());
     }
 
     /**
      * 修改邮箱
      *
-     * @param authorization
      * @param email
      * @return
      */
-    public Observable<ResultBase<String>> updateEmail(String authorization, String email) {
-        return service.updateEmail(authorization, email);
+    public Observable<ResultBase<String>> updateEmail(String email) {
+        return service.updateEmail(sharedPreferencesHelper.getUserToken(), email);
     }
 
     /**
@@ -84,5 +87,27 @@ public class DataManager {
         userBean.setEmail(email);
         userBean.setUserType(Constants.REGISTER_TYPE_NORMAL);
         return service.register(userBean);
+    }
+
+    /**
+     * 上传图片
+     *
+     * @param filePath
+     */
+    public Observable<ResultBase<String>> uploadImage(String filePath) {
+        File file = new File(filePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse(Constants.MULTIPART_FORM_DATA), file);
+        MultipartBody.Part multipartFile = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+        return service.uploadimage(multipartFile, sharedPreferencesHelper.getUserToken());
+    }
+
+    public Observable<ResultBase> logout() {
+        return service.logout(sharedPreferencesHelper.getUserToken())
+                .doOnNext(new Consumer<ResultBase>() {
+                    @Override
+                    public void accept(ResultBase resultBase) throws Exception {
+                        sharedPreferencesHelper.setUserToken("");
+                    }
+                });
     }
 }

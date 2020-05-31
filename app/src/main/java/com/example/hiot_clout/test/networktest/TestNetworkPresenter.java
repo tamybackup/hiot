@@ -1,12 +1,9 @@
 package com.example.hiot_clout.test.networktest;
 
-import android.util.Log;
-import android.widget.Toast;
 import android.text.TextUtils;
 
 import com.example.hiot_clout.data.DataManager;
 import com.example.hiot_clout.ui.base.BasePresenter;
-import com.example.hiot_clout.test.networktest.UserBean;
 
 import javax.inject.Inject;
 
@@ -38,7 +35,7 @@ public class TestNetworkPresenter extends BasePresenter<TestNetworkPackView> {
      * @param authorization
      */
     public void getUserInfo(String authorization) {
-        subscrib(dataManager.getUserinfo(authorization), new RequestCallback<ResultBase<UserBean>>() {
+        subscrib(dataManager.getUserinfo(), new RequestCallback<ResultBase<UserBean>>() {
             @Override
             public void onNext(ResultBase<UserBean> resultBase) {
                 if (resultBase != null && resultBase.getData() != null) {
@@ -59,7 +56,7 @@ public class TestNetworkPresenter extends BasePresenter<TestNetworkPackView> {
      * @param email
      */
     public void updateEmail(String authorization, String email) {
-        subscrib(dataManager.updateEmail(authorization, email), new RequestCallback<ResultBase<String>>() {
+        subscrib(dataManager.updateEmail(email), new RequestCallback<ResultBase<String>>() {
             @Override
             public void onNext(ResultBase<String> resultBase) {
                 if(resultBase != null && TextUtils.isEmpty(resultBase.getData())){

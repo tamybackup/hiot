@@ -5,13 +5,14 @@ import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.test.networktest.UserBean;
 
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
+import okhttp3.MultipartBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 /**
@@ -20,8 +21,10 @@ import retrofit2.http.Query;
 public interface NetworkService {
 
     public static final String BASE_URL = "http://114.67.88.191:8080/";
+
     /**
      * 登录
+     *
      * @param username
      * @param password
      * @param loginCode
@@ -30,8 +33,12 @@ public interface NetworkService {
     @POST("/auth/login")
     Observable<ResultBase<LoginResultDTO>> login(@Query("username") String username, @Query("password") String password, @Query("loginCode") String loginCode);
 
+    @POST("/auth/logout")
+    Observable<ResultBase> logout(@Header("Authorization") String authorization);
+
     /**
      * 获取用户信息
+     *
      * @param authorization
      * @return
      */
@@ -40,6 +47,7 @@ public interface NetworkService {
 
     /**
      * 修改邮箱
+     *
      * @param authorization
      * @param email
      * @return
@@ -49,9 +57,14 @@ public interface NetworkService {
 
     /**
      * 注册
+     *
      * @param userBean
      * @return
      */
     @POST("/user/register")
     Observable<ResultBase<UserBean>> register(@Body UserBean userBean);
+
+    @POST("/user/img")
+    @Multipart
+    Observable<ResultBase<String>> uploadimage(@Part MultipartBody.Part file, @Header("Authorization") String authorization);
 }

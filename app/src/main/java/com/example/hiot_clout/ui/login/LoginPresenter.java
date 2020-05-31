@@ -52,7 +52,7 @@ class LoginPresenter extends BasePresenter<LoginView> {
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                getView().showMessage("当前网络无法访问，请稍后再试");
+                getView().showMessage(Constants.TOAST_MSG_NETWORK_FALL);
             }
         });
     }

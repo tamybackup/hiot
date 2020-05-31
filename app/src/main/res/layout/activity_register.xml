@@ -55,7 +55,7 @@
         android:clickable="false"
         android:gravity="center"
         android:paddingBottom="10dp"
-        android:text="已有账号？直接登录"
+        android:text="@string/login_direct"
         android:textColor="#05eeff"
         android:textSize="16sp" />
 

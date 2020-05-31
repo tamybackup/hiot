@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg">
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="用户中心"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_head_image"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/hiotapp"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:id="@+id/tv_user_center_nickname"
+            android:text="昵称"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_user_center_email"
+            android:layout_marginTop="10dp"
+            android:text="邮箱"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_user_center_update_password"
+            android:text="修改密码"
+            android:drawableLeft="@drawable/icon_password"
+            android:drawableRight="@drawable/icon_rightarrow"
+            style="@style/UserCenterTestViewStyle" />
+
+        <TextView
+            android:id="@+id/tv_user_center_update_email"
+            android:text="修改邮箱"
+            android:drawableLeft="@drawable/icon_email"
+            android:drawableRight="@drawable/icon_rightarrow"
+            style="@style/UserCenterTestViewStyle" />
+
+        <TextView
+            android:text="意见反馈"
+            android:drawableLeft="@drawable/icon_message_selected"
+            android:drawableRight="@drawable/icon_rightarrow"
+            style="@style/UserCenterTestViewStyle" />
+
+        <TextView
+            android:text="关于我们"
+            android:drawableLeft="@drawable/icon_user"
+            android:drawableRight="@drawable/icon_rightarrow"
+            style="@style/UserCenterTestViewStyle" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_marginTop="20dp"
+            android:text="退出登录"
+            android:textColor="@android:color/white"
+            android:background="@drawable/logout_button_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>
