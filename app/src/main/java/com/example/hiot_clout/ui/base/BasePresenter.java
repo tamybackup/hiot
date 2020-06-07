@@ -2,6 +2,8 @@ package com.example.hiot_clout.ui.base;
 
 import android.util.Log;
 
+import com.example.hiot_clout.test.networktest.ResultBase;
+import com.example.hiot_clout.utils.Constants;
 import com.example.hiot_clout.utils.LoadingUtil;
 
 import io.reactivex.Observable;
@@ -74,7 +76,24 @@ public class BasePresenter<V extends BaseView> {
 
         }
 
-        public abstract void onNext(T t);
+        public void onNext(T t){
+            ResultBase resultBase=(ResultBase)t;
+            if (resultBase == null) {
+                getView().showMessage("服务器开小差了，请稍后再试");
+                return;
+            }
+
+            //如果token失效
+            if (resultBase.getStatus() == Constants.MSG_STATUS_TOKEN_OUT) {
+                getView().tokenOut();
+                return;
+            }
+
+            if (resultBase.getStatus() != Constants.MSG_STATUS_SUCCESS) {
+                getView().showMessage(resultBase.getMsg());
+                return;
+            }
+        }
 
         public void onError(Throwable e) {
             //对话框隐藏

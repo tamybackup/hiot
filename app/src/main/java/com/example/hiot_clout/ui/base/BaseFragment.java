@@ -1,5 +1,6 @@
 package com.example.hiot_clout.ui.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.hiot_clout.ui.login.LoginActivity;
+
+import butterknife.ButterKnife;
 
 public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V>> extends Fragment implements BaseView {
 
@@ -36,6 +41,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         if (presenter != null) {
             presenter.setView((V) this);
         }
+        ButterKnife.bind(this, view);
     }
 
     @Override
@@ -60,5 +66,29 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
     @Override
     public void showMessage(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 打开新界面，关闭本界面
+     * @param cls
+     */
+    protected void startActivity(Class<?> cls){
+        Intent intent=new Intent(getActivity(),cls);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
+    /**
+     * 打开新界面，保留本界面
+     * @param cls
+     */
+    protected void startActivityWithoutFinish(Class<?> cls){
+        Intent intent=new Intent(getActivity(),cls);
+        startActivity(intent);
+    }
+
+    @Override
+    public void tokenOut() {
+        startActivity(LoginActivity.class);
     }
 }
