@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.hiot_clout.R;
-import com.example.hiot_clout.test.networktest.UserBean;
+import com.example.hiot_clout.data.bean.UserBean;
 import com.example.hiot_clout.ui.base.BaseActivity;
 import com.example.hiot_clout.ui.base.BaseFragment;
 import com.example.hiot_clout.ui.login.LoginActivity;
@@ -33,7 +33,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MineFragment extends BaseFragment<MineView, MinePresenter> implements MineView {

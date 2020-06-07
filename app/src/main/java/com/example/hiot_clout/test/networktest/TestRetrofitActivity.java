@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.hiot_clout.R;
+import com.example.hiot_clout.data.bean.UserBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

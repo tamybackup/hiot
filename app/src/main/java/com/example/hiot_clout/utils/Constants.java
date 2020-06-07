@@ -32,4 +32,14 @@ public class Constants {
     public static final String MULTIPART_FORM_DATA = "multipart/form-data";
 
     public static final int MSG_STATUS_TOKEN_OUT = -100;
+
+    /**
+     * 设备已绑定
+     */
+    public static final int DEVICE_STATUS_BINDED = 1;
+
+    /**
+     * 设备未绑定
+     */
+    public static final int DEVICE_STATUS_UNBINDED = 1;
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.hiot_clout.ui.devicelist.DeviceListFragment;
 import com.example.hiot_clout.ui.mine.MineFragment;
 import com.example.hiot_clout.utils.Constants;
 
@@ -22,7 +23,7 @@ class MainViewPagerAdapter extends FragmentPagerAdapter {
                 fragment=MassageFragment.newInstance();
                 break;
             case Constants.MAIN_VIEWPAGER_INDEX_EQUIPMENT:
-                fragment=EquipmentFragment.newInstance();
+                fragment= DeviceListFragment.newInstance();
                 break;
             case Constants.MAIN_VIEWPAGER_INDEX_SCENE:
                 fragment=SceneFragment.newInstance();

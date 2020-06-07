@@ -3,6 +3,7 @@ package com.example.hiot_clout.test.networktest;
 import android.text.TextUtils;
 
 import com.example.hiot_clout.data.DataManager;
+import com.example.hiot_clout.data.bean.UserBean;
 import com.example.hiot_clout.ui.base.BasePresenter;
 
 import javax.inject.Inject;

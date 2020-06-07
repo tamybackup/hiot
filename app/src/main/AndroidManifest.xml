@@ -21,11 +21,7 @@
         android:theme="@style/AppTheme.NoAction"
         tools:replace="android:theme">
         <activity android:name=".ui.scan.ScanActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".test.glidetest.TestGlideActivity" />
@@ -36,7 +32,11 @@
         <activity android:name=".test.networktest.TestRetrofitActivity" />
         <activity android:name=".test.networktest.TestOkHttpActivity" />
         <activity android:name=".ui.main.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".test.mvptest.TestMVPActivity" />

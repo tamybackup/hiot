@@ -1,6 +1,6 @@
 package com.example.hiot_clout.ui.mine;
 
-import com.example.hiot_clout.test.networktest.UserBean;
+import com.example.hiot_clout.data.bean.UserBean;
 import com.example.hiot_clout.ui.base.BaseView;
 
 /**

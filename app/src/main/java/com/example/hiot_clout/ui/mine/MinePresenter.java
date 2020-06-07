@@ -2,7 +2,7 @@ package com.example.hiot_clout.ui.mine;
 
 import com.example.hiot_clout.data.DataManager;
 import com.example.hiot_clout.test.networktest.ResultBase;
-import com.example.hiot_clout.test.networktest.UserBean;
+import com.example.hiot_clout.data.bean.UserBean;
 import com.example.hiot_clout.ui.base.BasePresenter;
 import com.example.hiot_clout.utils.Constants;
 

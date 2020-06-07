@@ -1,8 +1,11 @@
 package com.example.hiot_clout.data;
 
+import com.example.hiot_clout.data.bean.DeviceBean;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
-import com.example.hiot_clout.test.networktest.UserBean;
+import com.example.hiot_clout.data.bean.UserBean;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
@@ -71,10 +74,14 @@ public interface NetworkService {
 
     /**
      * 绑定设备
+     *
      * @param device_pk
      * @param authorization
      * @return
      */
     @POST("/holder/device/{device_pk}")
-    Observable<ResultBase> bindDevicec(@Path("device_pk") String device_pk,@Header("Authorization") String authorization);
+    Observable<ResultBase> bindDevicec(@Path("device_pk") String device_pk, @Header("Authorization") String authorization);
+
+    @GET("/holder/user")
+    Observable<ResultBase<List<DeviceBean>>> listBindedDevice(@Query("bonding") int bonding, @Header("Authorization") String authorization);
 }

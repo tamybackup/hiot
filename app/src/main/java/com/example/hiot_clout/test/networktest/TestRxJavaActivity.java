@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.hiot_clout.R;
 import com.example.hiot_clout.data.NetworkService;
+import com.example.hiot_clout.data.bean.UserBean;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;

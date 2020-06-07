@@ -1,11 +1,13 @@
 package com.example.hiot_clout.data;
 
+import com.example.hiot_clout.data.bean.DeviceBean;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
-import com.example.hiot_clout.test.networktest.UserBean;
+import com.example.hiot_clout.data.bean.UserBean;
 import com.example.hiot_clout.utils.Constants;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -118,5 +120,14 @@ public class DataManager {
      */
     public Observable<ResultBase> bindDevice(String deviceId){
         return service.bindDevicec(deviceId,sharedPreferencesHelper.getUserToken());
+    }
+
+    /**
+     * 获取指定绑定状态的设备类型
+     * @param bonding
+     * @return
+     */
+    public Observable<ResultBase<List<DeviceBean>>> listBindedDevice(int bonding){
+        return service.listBindedDevice(bonding,sharedPreferencesHelper.getUserToken());
     }
 }
