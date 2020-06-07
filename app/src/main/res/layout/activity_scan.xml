@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.scan.ScanActivity">
+
+    <TextView
+        android:background="@color/app_bg"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:text="扫一扫"
+        android:gravity="center"
+        android:textSize="20sp"
+        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <SurfaceView
+                android:id="@+id/surfaceView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.king.zxing.ViewfinderView
+                android:id="@+id/viewfinderView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#AA333333"
+            android:padding="10dp"
+            android:layout_gravity="bottom|center_horizontal"
+            >
+            <TextView
+                android:id="@+id/tv_light"
+                android:text="闪光灯"
+                android:gravity="center"
+                android:drawableTop="@drawable/icon_light"
+                android:drawablePadding="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/tv_album"
+                android:text="相册"
+                android:gravity="center"
+                android:drawableTop="@drawable/icon_picture"
+                android:drawablePadding="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

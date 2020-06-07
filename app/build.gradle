@@ -81,4 +81,8 @@ dependencies {
     //图片选择框架
     //https://github.com/LuckSiege/PictureSelector
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.9'
+
+    //二维码生成扫描框架
+//https://github.com/jenly1314/ZXingLite
+    implementation 'com.king.zxing:zxing-lite:1.1.6-androidx'
 }

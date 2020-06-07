@@ -25,6 +25,7 @@ import com.example.hiot_clout.ui.main.MainActivity;
 import com.example.hiot_clout.ui.main.SplashActivity;
 import com.example.hiot_clout.ui.mine.MineFragment;
 import com.example.hiot_clout.ui.register.RegisterActivity;
+import com.example.hiot_clout.ui.scan.ScanActivity;
 
 import dagger.Component;
 
@@ -51,6 +52,8 @@ public interface ActivityComponent {
     void inject(MineFragment fragment);
 
     void inject(RegisterActivity activity);
+
+    void inject(ScanActivity scanActivity);
 
 
     @Component.Builder
