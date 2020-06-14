@@ -53,7 +53,9 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.Vi
             @Override
             public void onClick(View v) {
                 DeviceBean bean = dataList.get(position);
-                onItemClickListener.onClickListener(bean);
+                if (onItemClickListener != null){
+                    onItemClickListener.onClickListener(bean);
+                }
             }
         });
     }

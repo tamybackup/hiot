@@ -1,6 +1,7 @@
 package com.example.hiot_clout.data;
 
 import com.example.hiot_clout.data.bean.DeviceBean;
+import com.example.hiot_clout.data.bean.DeviceDetailBean;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.data.bean.UserBean;
@@ -129,5 +130,18 @@ public class DataManager {
      */
     public Observable<ResultBase<List<DeviceBean>>> listBindedDevice(int bonding){
         return service.listBindedDevice(bonding,sharedPreferencesHelper.getUserToken());
+    }
+
+    /**
+     * 获取设备详情
+     * @param deviceId
+     * @return
+     */
+    public Observable<ResultBase<DeviceDetailBean>> getDeviceDetail(String deviceId){
+        return service.getDeviceDetail(deviceId,sharedPreferencesHelper.getUserToken());
+    }
+
+    public Observable<ResultBase> changeSwitch(String dataStreamId,int status){
+        return service.changeSwitch(dataStreamId,status,sharedPreferencesHelper.getUserToken());
     }
 }
