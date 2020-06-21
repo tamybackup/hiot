@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.datastreamhistory.LineChartActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar_history"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_bg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/tv_data_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="历史数据"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:theme="@style/Theme.AppCompat.Light" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/line_chart_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

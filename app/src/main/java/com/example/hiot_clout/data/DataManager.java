@@ -2,6 +2,7 @@ package com.example.hiot_clout.data;
 
 import com.example.hiot_clout.data.bean.DeviceBean;
 import com.example.hiot_clout.data.bean.DeviceDetailBean;
+import com.example.hiot_clout.data.bean.UpDataStreamSwitchBean;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.data.bean.UserBean;
@@ -143,5 +144,14 @@ public class DataManager {
 
     public Observable<ResultBase> changeSwitch(String dataStreamId,int status){
         return service.changeSwitch(dataStreamId,status,sharedPreferencesHelper.getUserToken());
+    }
+
+    /**
+     * 获取通道历史数据
+     * @param upDataStreamId
+     * @return
+     */
+    public Observable<ResultBase<List<UpDataStreamSwitchBean>>> getUpdataStreamHistory(String upDataStreamId){
+        return service.getUpDataStreamHistory(0,Constants.DEFAULT_DATASTREAM_HISTORY,upDataStreamId,sharedPreferencesHelper.getUserToken());
     }
 }

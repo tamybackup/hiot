@@ -2,6 +2,7 @@ package com.example.hiot_clout.data;
 
 import com.example.hiot_clout.data.bean.DeviceBean;
 import com.example.hiot_clout.data.bean.DeviceDetailBean;
+import com.example.hiot_clout.data.bean.UpDataStreamSwitchBean;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
 import com.example.hiot_clout.data.bean.UserBean;
@@ -101,4 +102,19 @@ public interface NetworkService {
     Observable<ResultBase> changeSwitch(@Path("downdatastream_pk") String dataStreamId,
                                         @Query("status") int status,
                                         @Header("Authorization") String authorization);
+
+    /**
+     * 获取上行通道历史数据
+     * @param skip
+     * @param limit
+     * @param updatastreamId
+     * @param authorization
+     * @return
+     */
+    @GET("/mongo/download/{updatastreamId}/{skip}/{limit}/List")
+    Observable<ResultBase<List<UpDataStreamSwitchBean>>> getUpDataStreamHistory(@Path("skip")int skip,
+                                                                          @Path("limit") int limit,
+                                                                          @Path("updatastreamId")String updatastreamId,
+                                                                          @Header("Authorization") String authorization
+    );
 }

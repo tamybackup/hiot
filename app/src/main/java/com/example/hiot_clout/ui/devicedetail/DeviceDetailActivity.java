@@ -1,13 +1,14 @@
 package com.example.hiot_clout.ui.devicedetail;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -16,13 +17,16 @@ import com.example.hiot_clout.data.bean.DeviceDetailBean;
 import com.example.hiot_clout.data.bean.SwitchBean;
 import com.example.hiot_clout.data.bean.UpdatastreamDataDto;
 import com.example.hiot_clout.ui.base.BaseActivity;
+import com.example.hiot_clout.ui.datastreamhistory.LineChartActivity;
 import com.example.hiot_clout.utils.Constants;
 import com.example.hiot_clout.utils.ImageUtils;
+import com.luck.picture.lib.tools.StringUtils;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceDetailPresenter> implements DeviceDetailView {
 
@@ -60,6 +64,11 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
      * 设备id
      */
     private String deviceId;
+
+    /**
+     * 当前上行通道id
+     */
+    private String upDataStreamId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +154,9 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
                 return;
             }
 
-            if (Constants.DATA_STREAM_TYPE_SWITCH.equals(updatastreamDataDto.getData_type())){
+            upDataStreamId=null;
+            if (Constants.DATA_STREAM_TYPE_SWITCH.equals(updatastreamDataDto.getData_type())) {
+                upDataStreamId=updatastreamDataDto.getUpDataStreamId();
                 tvDataStreamType.setText("开关通道");
                 switchDataStream.setVisibility(View.VISIBLE);
                 if (updatastreamDataDto.getDataList() != null && !updatastreamDataDto.getDataList().isEmpty()) {
@@ -157,7 +168,7 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
                     if (Constants.SWITCH_STATUS_ON == switchBean.getStatus()) {
                         ivSwitch.setImageResource(R.drawable.icon_on);
                         switchDataStream.setChecked(true);
-                    }else {
+                    } else {
                         ivSwitch.setImageResource(R.drawable.icon_off);
                         switchDataStream.setChecked(false);
                     }
@@ -165,11 +176,21 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
                     switchDataStream.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            presenter.changeSwitch(switchBean.getDownDataStreamId(),isChecked);
+                            presenter.changeSwitch(switchBean.getDownDataStreamId(), isChecked);
                         }
                     });
                 }
             }
         }
+    }
+
+    @OnClick(R.id.iv_data_stream_history)
+    public void onViewClicked() {
+        if (TextUtils.isEmpty(upDataStreamId)){
+            return;
+        }
+        Intent intent=new Intent(this, LineChartActivity.class);
+        intent.putExtra(Constants.INTENT_EXTRA_UP_DATA_STREAM_ID,upDataStreamId);
+        startActivity(intent);
     }
 }

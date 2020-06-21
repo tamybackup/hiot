@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -85,4 +86,11 @@ dependencies {
     //二维码生成扫描框架
 //https://github.com/jenly1314/ZXingLite
     implementation 'com.king.zxing:zxing-lite:1.1.6-androidx'
+
+    //android开源图表库
+    //https://github.com/PhilJay/MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // 分包
+    implementation 'androidx.multidex:multidex:2.0.0'
 }

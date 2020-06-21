@@ -81,4 +81,13 @@ public class Constants {
      */
     public static final Integer SWITCH_STATUS_OFF = 0;
 
+    /**
+     * 通道id
+     */
+    public static final String INTENT_EXTRA_UP_DATA_STREAM_ID = "INTENT_EXTRA_UP_DATA_STREAM_ID";
+
+    /**
+     * 默认每页显示数量
+     */
+    public static final int DEFAULT_DATASTREAM_HISTORY = 10;
 }

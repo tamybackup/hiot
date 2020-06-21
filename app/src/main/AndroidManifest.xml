@@ -20,8 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoAction"
         tools:replace="android:theme">
-        <activity android:name=".ui.devicedetail.DeviceDetailActivity"></activity>
-        <activity android:name=".ui.scan.ScanActivity"></activity>
+        <activity android:name=".ui.datastreamhistory.LineChartActivity"></activity>
+        <activity android:name=".ui.devicedetail.DeviceDetailActivity" />
+        <activity android:name=".ui.scan.ScanActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".test.glidetest.TestGlideActivity" />
         <activity android:name=".test.TestActivity" />
