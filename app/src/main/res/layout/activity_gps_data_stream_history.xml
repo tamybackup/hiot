@@ -5,28 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.switchdatastreamhistory.LineChartActivity">
+    tools:context=".ui.gpsdatastreamhistory.GpsDataStreamHistoryActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar_history"
+        android:id="@+id/tool_bar_gps_history"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/app_bg"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <TextView
-            android:id="@+id/tv_data_history"
+            android:id="@+id/tv_gps_data_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="历史数据"
+            android:text="运行轨迹"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:theme="@style/Theme.AppCompat.Light" />
     </androidx.appcompat.widget.Toolbar>
-
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/line_chart_history"
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
+
 </LinearLayout>

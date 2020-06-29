@@ -1,4 +1,4 @@
-package com.example.hiot_clout.ui.datastreamhistory;
+package com.example.hiot_clout.ui.switchdatastreamhistory;
 
 import com.example.hiot_clout.data.DataManager;
 import com.example.hiot_clout.data.bean.UpDataStreamSwitchBean;
@@ -25,7 +25,7 @@ class LineChartPresenter extends BasePresenter<LineChartView> {
      * @param upDateStreamId
      */
     public void loadUpDataStreamHistory(String upDateStreamId) {
-        subscrib(dataManager.getUpdataStreamHistory(upDateStreamId), new RequestCallback<ResultBase<List<UpDataStreamSwitchBean>>>() {
+        subscrib(dataManager.getSwicthUpdataStreamHistory(upDateStreamId), new RequestCallback<ResultBase<List<UpDataStreamSwitchBean>>>() {
             @Override
             public void onNext(ResultBase<List<UpDataStreamSwitchBean>> resultBase) {
                 super.onNext(resultBase);

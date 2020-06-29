@@ -1,4 +1,4 @@
-package com.example.hiot_clout.ui.datastreamhistory;
+package com.example.hiot_clout.ui.switchdatastreamhistory;
 
 
 import com.example.hiot_clout.data.bean.UpDataStreamSwitchBean;

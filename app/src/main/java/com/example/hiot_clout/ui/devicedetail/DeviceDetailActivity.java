@@ -17,10 +17,10 @@ import com.example.hiot_clout.data.bean.DeviceDetailBean;
 import com.example.hiot_clout.data.bean.SwitchBean;
 import com.example.hiot_clout.data.bean.UpdatastreamDataDto;
 import com.example.hiot_clout.ui.base.BaseActivity;
-import com.example.hiot_clout.ui.datastreamhistory.LineChartActivity;
+import com.example.hiot_clout.ui.gpsdatastreamhistory.GpsDataStreamHistoryActivity;
+import com.example.hiot_clout.ui.switchdatastreamhistory.LineChartActivity;
 import com.example.hiot_clout.utils.Constants;
 import com.example.hiot_clout.utils.ImageUtils;
-import com.luck.picture.lib.tools.StringUtils;
 
 import javax.inject.Inject;
 
@@ -69,6 +69,11 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
      * 当前上行通道id
      */
     private String upDataStreamId;
+
+    /**
+     * 当前通道类型
+     */
+    private String upDataStreamType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,9 +159,15 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
                 return;
             }
 
-            upDataStreamId=null;
+            upDataStreamId = null;
+            upDataStreamType = updatastreamDataDto.getData_type();
+            if (Constants.DATA_STREAM_TYPE_GPS.equals(updatastreamDataDto.getData_type())) {
+                upDataStreamId = updatastreamDataDto.getUpDataStreamId();
+                tvDataStreamType.setText("GPS通道");
+            }
+
             if (Constants.DATA_STREAM_TYPE_SWITCH.equals(updatastreamDataDto.getData_type())) {
-                upDataStreamId=updatastreamDataDto.getUpDataStreamId();
+                upDataStreamId = updatastreamDataDto.getUpDataStreamId();
                 tvDataStreamType.setText("开关通道");
                 switchDataStream.setVisibility(View.VISIBLE);
                 if (updatastreamDataDto.getDataList() != null && !updatastreamDataDto.getDataList().isEmpty()) {
@@ -186,11 +197,19 @@ public class DeviceDetailActivity extends BaseActivity<DeviceDetailView, DeviceD
 
     @OnClick(R.id.iv_data_stream_history)
     public void onViewClicked() {
-        if (TextUtils.isEmpty(upDataStreamId)){
+        if (TextUtils.isEmpty(upDataStreamId)) {
             return;
         }
-        Intent intent=new Intent(this, LineChartActivity.class);
-        intent.putExtra(Constants.INTENT_EXTRA_UP_DATA_STREAM_ID,upDataStreamId);
-        startActivity(intent);
+        if (Constants.DATA_STREAM_TYPE_SWITCH.equals(upDataStreamType)) {
+            Intent intent = new Intent(this, LineChartActivity.class);
+            intent.putExtra(Constants.INTENT_EXTRA_UP_DATA_STREAM_ID, upDataStreamId);
+            startActivity(intent);
+            return;
+        }
+        if (Constants.DATA_STREAM_TYPE_GPS.equals(upDataStreamType)) {
+            Intent intent = new Intent(this, GpsDataStreamHistoryActivity.class);
+            intent.putExtra(Constants.INTENT_EXTRA_UP_DATA_STREAM_ID, upDataStreamId);
+            startActivity(intent);
+        }
     }
 }

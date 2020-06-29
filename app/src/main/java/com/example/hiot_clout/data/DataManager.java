@@ -2,6 +2,7 @@ package com.example.hiot_clout.data;
 
 import com.example.hiot_clout.data.bean.DeviceBean;
 import com.example.hiot_clout.data.bean.DeviceDetailBean;
+import com.example.hiot_clout.data.bean.UpDataStreamGpsBean;
 import com.example.hiot_clout.data.bean.UpDataStreamSwitchBean;
 import com.example.hiot_clout.test.networktest.LoginResultDTO;
 import com.example.hiot_clout.test.networktest.ResultBase;
@@ -151,7 +152,16 @@ public class DataManager {
      * @param upDataStreamId
      * @return
      */
-    public Observable<ResultBase<List<UpDataStreamSwitchBean>>> getUpdataStreamHistory(String upDataStreamId){
-        return service.getUpDataStreamHistory(0,Constants.DEFAULT_DATASTREAM_HISTORY,upDataStreamId,sharedPreferencesHelper.getUserToken());
+    public Observable<ResultBase<List<UpDataStreamSwitchBean>>> getSwicthUpdataStreamHistory(String upDataStreamId){
+        return service.getSwitchUpDataStreamHistory(0,Constants.DEFAULT_DATASTREAM_HISTORY,upDataStreamId,sharedPreferencesHelper.getUserToken());
+    }
+
+    /**
+     * 获取GPS通道历史数据
+     * @param upDataStreamId
+     * @return
+     */
+    public Observable<ResultBase<List<UpDataStreamGpsBean>>> getGpsUpdataStreamHistory(String upDataStreamId){
+        return service.getGpsUpDataStreamHistory(0,Constants.DEFAULT_DATASTREAM_HISTORY,upDataStreamId,sharedPreferencesHelper.getUserToken());
     }
 }

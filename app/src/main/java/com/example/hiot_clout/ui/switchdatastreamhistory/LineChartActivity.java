@@ -1,10 +1,9 @@
-package com.example.hiot_clout.ui.datastreamhistory;
+package com.example.hiot_clout.ui.switchdatastreamhistory;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.hiot_clout.R;
